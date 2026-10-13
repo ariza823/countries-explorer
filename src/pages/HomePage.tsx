@@ -6,9 +6,10 @@ import { CountryCard } from '../components/CountryCard'
 import { Pagination } from '../components/Pagination'
 import { filterCountries, type SortOption } from '../filterCountries'
 import { useDebounce } from '../hooks/useDebounce'
+import { REGION_LABELS } from '../regions'
 
 const PAGE_SIZE = 12
-const REGIONS = ['Africa', 'Americas', 'Asia', 'Europe', 'Oceania']
+const REGIONS = Object.entries(REGION_LABELS)
 
 export function HomePage() {
   // Los filtros viven en la URL: se pueden compartir y sobreviven al botón "atrás".
@@ -55,13 +56,14 @@ export function HomePage() {
         />
         <select aria-label="Región" value={region} onChange={(e) => update('region', e.target.value)} className={field}>
           <option value="">Todas las regiones</option>
-          {REGIONS.map((r) => (
-            <option key={r}>{r}</option>
+          {REGIONS.map(([value, label]) => (
+            <option key={value} value={value}>
+              {label}
+            </option>
           ))}
         </select>
         <select aria-label="Ordenar" value={sort} onChange={(e) => update('sort', e.target.value)} className={field}>
           <option value="name">Nombre (A-Z)</option>
-          <option value="population">Población</option>
           <option value="area">Área</option>
         </select>
       </div>
@@ -79,7 +81,7 @@ export function HomePage() {
 
       {data && (
         <>
-          <p className="text-sm text-slate-500">{filtered.length} países</p>
+          <p className="text-sm text-slate-500">{filtered.length} {filtered.length === 1 ? 'país' : 'países'}</p>
           {visible.length === 0 ? (
             <p className="py-20 text-center text-slate-500">Ningún país coincide con la búsqueda.</p>
           ) : (

@@ -9,7 +9,7 @@ export default function App() {
       <header className="bg-white shadow-sm">
         <div className="mx-auto flex max-w-6xl items-center justify-between p-4">
           <Link to="/" className="text-lg font-bold">🌎 Countries Explorer</Link>
-          <span className="text-xs text-slate-500">Datos: REST Countries</span>
+          <span className="text-xs text-slate-500">Datos: world-countries · banderas: flagcdn</span>
         </div>
       </header>
       <main className="mx-auto max-w-6xl p-4 md:p-8">

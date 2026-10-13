@@ -9,13 +9,12 @@ describe('CountryCard', () => {
       <MemoryRouter>
         <CountryCard
           country={{
+            cca2: 'CO',
             cca3: 'COL',
             name: { common: 'Colombia', official: 'República de Colombia' },
             capital: ['Bogotá'],
             region: 'Americas',
-            population: 50882884,
             area: 1141748,
-            flags: { svg: 'flag.svg', alt: 'Bandera de Colombia' },
           }}
         />
       </MemoryRouter>,
